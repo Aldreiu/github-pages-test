@@ -108,6 +108,7 @@ article {
     }
 
     header::before {
+        content: "";
         background-position: 700px;
     }
 
