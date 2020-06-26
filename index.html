@@ -50,13 +50,14 @@
           NProgress.done();
         });
         NProgress.set(0, 0);
-        NProgress.configure({ easing: "ease", speed: 700 });
+        NProgress.configure({ easing: "ease", speed: 1200 });
         NProgress.configure({ showSpinner: false });
         // 设置最低的百分比
         NProgress.configure({ minimum: 0.4 });
         // 加载条增加量
         NProgress.configure({ trickleSpeed: 200 });
-        NProgress.set(0, 4);
+        NProgress.configure({ trickleSpeed: 1200 });
+        // NProgress.set(0, 4);
 
         NProgress.inc();
         $(window).ready(function () {
