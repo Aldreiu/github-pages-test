@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: consolas;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section h2 {
+    font-size: 10em;
+    color: #333;
+}
+
+section span {
+    position: absolute;
+    background: transparent;
+    border-radius: 50%;
+    bottom: -50px;
+
+    /* 新的   禁止鼠标事件 */
+    pointer-events: none;
+
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+
+    animation: animate 4s linear infinite;
+}
+
+section span::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scale(0.25) translate(-70%, -70%);
+    background:
+        /* 
+    radial-gradient() 函数用径向渐变创建 "图像"。
+
+径向渐变由中心点定义。
+
+为了创建径向渐变你必须设置两个终止色。 */
+        radial-gradient(#fff, transparent);
+    border-radius: 50%;
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+
+    99% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-1200%);
+        opacity: 0;
+    }
+}
+
+/* .test{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    margin-top: 20px;
+    margin-bottom: 50px;
+
+    box-shadow: inset 10px 10px 0 ;
+} */

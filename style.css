@@ -108,24 +108,6 @@ html{
     font-size: 16px;
 }
 
-@media screen and (max-width:1680px){
-    html{
-        font-size: 12px;
-    }
-}
-
-@media screen and (max-width:736px){
-    html{
-        font-size: 11px;
-    }
-}
-
-@media screen and (max-width:360px){
-    html{
-        font-size: 10px;
-    }
-}
-
 /* 控制开始状态 因为有过度所以样式移除一直的效果取消 */
 body.is-loading *,
 body.is-loading *:before,
@@ -517,6 +499,21 @@ h1 {
     /* display: none; */
 }
 
+article .test-ul ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+}
+
+article .test-ul ul li{
+    flex: 1 1 15rem;
+    padding: 2rem;
+    margin: 1rem;
+    box-shadow: -4px -4px 10px -8px rgba(255, 255, 255, 1), 4px 4px 10px -8px rgba(0, 0, 0, .3);
+}
+
 @keyframes continueAm {
     0% {
         transform: translateX(0px);
@@ -543,5 +540,46 @@ h1 {
     h2 {
         font-size: 1.25em;
         line-height: 1.5;
+    }
+}
+
+@media screen and (max-width:1680px){
+    html{
+        font-size: 12px;
+    }
+
+    #continue{
+        display: none;
+    }
+}
+
+@media screen and (max-width:736px){
+    html{
+        font-size: 11px;
+        overflow: hidden;
+    }
+
+    #continue{
+        display: none;
+    }
+
+    #bg::after{
+        background-position: -600px 0;
+    }
+    
+}
+
+@media screen and (max-width:360px){
+    html{
+        font-size: 10px;
+        overflow: hidden;
+    }
+
+    #continue{
+        display: none;
+    }
+
+    #bg::after{
+        background-position: -600px 0;
     }
 }
