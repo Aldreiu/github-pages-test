@@ -3,17 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="stylesheet" href="./style.css" />
-    <link
-      rel="stylesheet"
-      href="./static/nprogress.min.css"
-    />
+    <link rel="stylesheet" href="./static/nprogress.min.css" />
     <title>html css js jquery Test</title>
   </head>
-  <body >
+  <body>
     <div id="wrapper">
       <!-- 首页开始 -->
-      <header id="eader"></header>
+      <header id="header">
+        <div class="logo">
+          <span class="fa fa-snowflake-o"></span>
+        </div>
+        <div class="content">
+          <div class="inner">
+            <h1>Aldreiu Test</h1>
+            <p>
+              井底之蛙不曾见过大海，但却见过蔚蓝的天空 ——《知晓天空之蓝的人啊》
+            </p>
+          </div>
+        </div>
+        <!-- nav 标签定义导航链接部分  自己div写多了 练习一下 -->
+        <nav>
+          <ul>
+            <li><a href="#1">简介</a></li>
+            <li><a href="#2">练习模块</a></li>
+            <li><a href="#3">个签</a></li>
+          </ul>
+        </nav>
+      </header>
       <!-- 首页结束 -->
 
       <div id="main">
@@ -24,6 +42,20 @@
             井底之蛙不曾见过大海，但却见过蔚蓝的天空 ——《知晓天空之蓝的人啊》
           </p>
         </article>
+        <article id="2">
+          <h2 class="major">简洁</h2>
+          <div>
+            <ul>
+              <li><a href="js01-slider-images">js全屏图片轮播</a></li>
+            </ul>
+          </div>
+        </article>
+        <article id="3">
+          <h2 class="major">个签</h2>
+          <p>
+            最短的捷径就是绕远路，绕远路就是我最短的捷径 —————— 杰洛·齐贝林
+          </p>
+        </article>
       </div>
       <div id="social-icon">
         <!-- 社交图标 -->
@@ -32,9 +64,11 @@
       <footer id="footer">
         <p class="copyright">&copy;2020 亚尔德勒尤 (Aldreiu)</p>
       </footer>
+      <!-- to continue -->
+      <div id="continue">
+        <img src="./static/u=3165699171,2587711135&fm=26&gp=0 (2).jpg" alt="" />
+      </div>
     </div>
-
-    
 
     <!-- BG -->
     <div id="bg"></div>
@@ -43,11 +77,11 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.js"></script>
     <!-- NProgress进度条js上面需要加上css -->
     <script src="./static/nprogress.min.js"></script>
-    
+
     <!-- main.js -->
     <script src="./main.js"></script>
 
-    <!-- 进度条 -->
+    <!-- 进度条 一定要放在所有js文件之后 这样才能判断是否全部加载完毕 否则会有bug -->
     <script>
       $(function () {
         $(window).on("load", function () {

@@ -1,3 +1,5 @@
+@import url('./static/font-awesome.min.css');
+
 html,
 body,
 div,
@@ -87,29 +89,143 @@ video {
     vertical-align: baseline;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    border-bottom-color: transparent;
+}
+
 *,
 *:before,
 *:after {
     box-sizing: border-box;
 }
 
+html{
+    font-size: 16px;
+}
+
+@media screen and (max-width:1680px){
+    html{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width:736px){
+    html{
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width:360px){
+    html{
+        font-size: 10px;
+    }
+}
+
 /* 控制开始状态 因为有过度所以样式移除一直的效果取消 */
-body.is-loading *, body.is-loading *:before, body.is-loading *:after{
-    
+body.is-loading *,
+body.is-loading *:before,
+body.is-loading *:after {
+
     animation: none !important;
-    
+
     transition: none !important;
-    
+
     transition-delay: none !important;
+}
+
+body {
+    overflow: hidden;
 }
 
 html {
     -webkit-text-size-adjust: none;
 }
 
+article {
+    display: block;
+}
+
 /* 留一个坑 */
 #main {
-    display: none;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    max-width: 100%;
+    z-index: 3;
+}
+
+#main article {
+    background-color: rgba(27, 31, 34, 0.85);
+    padding: 4.5rem 2.5rem 1.5rem 2.5rem;
+    width: 40rem;
+    max-width: 100%;
+    border-radius: 9px;
+    opacity: 0;
+    transform: translateY(0.25rem);
+    position: relative;
+}
+
+#main article.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#main article .close {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4rem;
+    height: 4rem;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-indent: 4rem;
+}
+
+#main article .close::before {
+    content: '';
+    transition: background-color 0.2s ease-in-out;
+    display: block;
+    position: absolute;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='https://www.w3.org/1999/xlink' width='20px' height='20px' viewBox='0 0 20 20' zoomAndPan='disable'%3E%3Cstyle%3Eline %7B stroke: %23ffffff%3B stroke-width: 1%3B %7D%3C/style%3E%3Cline x1='2' y1='2' x2='18' y2='18' /%3E%3Cline x1='18' y1='2' x2='2' y2='18' /%3E%3C/svg%3E");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    top: 0.75rem;
+    left: 0.75rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-position: center;
+    border-radius: 100%;
+}
+
+#main article .close:hover::before{
+    background-color: rgba(255, 255, 255, 0.075);
+}
+
+#main article .close:active::before{
+    background-color: rgba(255, 255, 255, 0.175);
+}
+
+h2.major{
+    border-bottom: solid 1px #fff;
+    width: max-content;
+    padding-bottom: 0.5rem;
+    margin: 0 0 2rem 0;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+article p{
+    margin: 0 0 2rem 0;
 }
 
 #bg {
@@ -162,24 +278,270 @@ html {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    transition: transform 0.325s ease-in-out,filter 0.325s ease-in-out;
+    transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out;
 
     z-index: 1;
 }
 
+#footer p {
+    font-size: 0.7rem;
+    margin-top: 3rem;
+}
+
 /* 加载时候添加的效果上面控制transform效果 这里需要js控制 */
-body.is-article-visible #bg::after{
+body.is-article-visible #bg::after {
     transform: scale(1.0825);
     filter: blur(0.2rem);
 }
+
+body.is-article-visible #header {
+    transform: scale(0.95);
+    filter: blur(0.1rem);
+    opacity: 0;
+}
+
+body.is-article-visible #footer {
+    transform: scale(0.95);
+    filter: blur(0.1rem);
+    opacity: 0;
+}
+
 
 body.is-loading #bg:before {
     background-color: #000000;
 }
 
+body.is-loading #header {
+    /* 高斯模糊 */
+    filter: blur(0.125rem);
+}
 
+body.is-loading #header>* {
+    opacity: 0;
+}
+
+body.is-loading #header .content .inner {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+}
+
+body.is-loading #footer {
+    opacity: 0;
+}
+
+#footer {
+    transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
+
+}
+
+/* body.is-loading #continue{
+   
+} */
+
+#continue {
+    animation: continueAm 3s ease-in-out 2s;
+    animation-fill-mode: forwards;
+}
+
+
+body,
+input,
+select,
+textarea {
+    color: #fff;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+
+#wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    padding: 4rem 2rem;
+    z-index: 3;
+}
+
+#wrapper::before {
+    content: '';
+    display: block;
+}
+
+/* 坑  处理 wrappper的响应式 */
+
+#header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
+    max-width: 100%;
+    text-align: center;
+}
+
+#header>* {
+    transition: opacity 0.325s ease-in-out;
+    position: relative;
+    margin-top: 3.5rem;
+}
+
+#header> :first-child {
+    margin-top: 0;
+}
+
+#header> :first-child::before {
+    display: none;
+}
+
+#header>*::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: calc(-3.5rem - 1px);
+    left: calc(50% - 1px);
+    width: 1px;
+    height: calc(3.5rem + 1px);
+    background-color: #fff;
+}
+
+#header .logo {
+    width: 5.5rem;
+    height: 5.5rem;
+    line-height: 6rem;
+    border: solid 1px #fff;
+    border-radius: 100%;
+}
+
+#header .logo .fa::before {
+    font-size: 2rem;
+}
+
+#header .content {
+    border-style: solid;
+    border-color: #fff;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    max-width: 100%;
+}
+
+#header .content .inner {
+    transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
+    transition-delay: 0.25s;
+    padding: 3rem 2rem;
+    max-height: 40rem;
+    overflow: hidden;
+}
+
+#header nav ul {
+    display: flex;
+    list-style: none;
+    border: solid 1px #fff;
+    border-radius: 4px;
+    /* margin-bottom: 0;
+    padding-left: 0; */
+}
+
+#header nav ul li {
+    border-left: solid 1px #fff;
+
+}
+
+#header nav ul li:first-child {
+    border-left: 0;
+}
+
+#header nav ul li a {
+    display: block;
+    min-width: 7.5rem;
+    height: 2.75rem;
+    line-height: 2.75rem;
+    padding: 0 1.25rem 0 1.45rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 0.8rem;
+
+}
+
+#header nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.075);
+}
+
+#header nav ul li a:active {
+    background-color: rgba(255, 255, 255, 0.175);
+}
+
+h1 {
+    font-size: 2.25rem;
+    line-height: 1.3;
+    letter-spacing: 0.5rem;
+    color: #fff;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+}
+
+.icon {
+    text-decoration: none;
+    border-bottom: none;
+    position: relative;
+}
+
+.icon:before {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: none !important;
+}
+
+#continue {
+    position: absolute;
+    bottom: 0;
+    right: -700px;
+
+}
+
+#continue img {
+
+    z-index: 100;
+}
 
 /* 坑 */
 #footer {
-    display: none;
+    /* display: none; */
+}
+
+@keyframes continueAm {
+    0% {
+        transform: translateX(0px);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translateX(-700px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0px);
+        opacity: 0;
+    }
+}
+
+@media screen and (max-width:736px){
+    h1 {
+        font-size: 1.75rem;
+        line-height: 1.4;
+    }
+
+    h2 {
+        font-size: 1.25em;
+        line-height: 1.5;
+    }
 }
